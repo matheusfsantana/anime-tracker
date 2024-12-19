@@ -1,0 +1,14 @@
+<section class="">
+    <% @animes.each do |anime| %>
+        <div class="flex mb-3">
+            <% if anime.poster.attached?%>
+                <%= anime.poster%>
+            <% else %>
+                <div class="bg-gray-300 w-24 h-48 mr-8"></div>
+            <% end %>
+            <div>
+                <p class="text-xl"><%= anime.title%></p>
+            </div>
+        </div>
+    <% end %>
+</section>  

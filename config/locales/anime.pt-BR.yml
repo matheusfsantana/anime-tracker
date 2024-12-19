@@ -1,0 +1,5 @@
+pt-BR:
+  activerecords:
+    attributes:
+      anime:
+        title: Titulo
