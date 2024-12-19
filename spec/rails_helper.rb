@@ -37,7 +37,7 @@ RSpec.configure do |config|
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
   ]
-  
+
   config.before(type: :system) do
     driven_by(:rack_test)
   end

@@ -1,0 +1,9 @@
+<%= form_with model: @anime do |f| %>
+    <div>
+        <%= f.text_field :title, placeholder: Anime.human_attribute_name(:title)%>
+    </div>
+    <div>
+        <%= f.file_field :poster%>
+    </div>
+    <%= f.submit 'Salvar'%>
+<% end %>
