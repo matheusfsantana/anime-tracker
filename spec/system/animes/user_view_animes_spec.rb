@@ -15,6 +15,7 @@ describe 'user try to view animes' do
           quantity_episodes: 391
         )
 
+    # login_as :user, scope: :user
     visit animes_path
 
     expect(page).to have_content 'One Piece'

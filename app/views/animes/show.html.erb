@@ -1,0 +1,17 @@
+<div class="flex">
+    <section>
+        <% if @anime.poster.attached?%>
+        <div class="w-64 mr-8">
+            <%= image_tag @anime.poster%>
+        </div>
+            
+        <% else %>
+            <div class="bg-gray-300 w-24 h-48 mr-8"></div>
+        <% end %>
+    </section>
+    <section>
+        <h1 class="font-medium text-xl"><%= @anime.title%></h1>
+        <h2 class="text-xl">Sinopse</h2>
+        <p><%= @anime.sinopse %></p>
+    </section>
+</div>
