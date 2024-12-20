@@ -32,16 +32,24 @@
               <span class="text-2xl font-bold text-indigo-600">AnimeTracker</span>
             </div>
 
-            <div class="flex items-center space-x-4">
-              <a href="/login" class="text-gray-600 hover:text-indigo-600">Login</a>
-              <a href="/register" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">
-                Criar Conta
-              </a>
-            </div>
-
+            <% unless user_signed_in? %>
+              <div class="flex items-center space-x-4">
+                <%= link_to 'Login', new_user_session_path, class: "text-gray-600 hover:text-indigo-600" %>
+                <%= link_to 'Criar Conta', new_user_registration_path, class: "bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700" %>
+              </div>
+            <% else %>
+                <div class="flex items-center space-x-4">
+                  <span class="mr-3"> <%= current_user.nickname %></span>
+                  <%= button_to 'Sair', destroy_user_session_path, method: :delete, class: 'text-black' %> 
+                </div>
+            <% end %>
           </div>
         </div>
       </nav>
+      <div> 
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+      </div>
     </div>
     <main class="w-10/12 mx-auto mt-12 px-5 flex">
       <%= yield %>
