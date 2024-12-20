@@ -50,7 +50,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   gem "rspec-rails"
-  
+
   gem "capybara"
 end
 
@@ -59,3 +59,5 @@ group :development do
   gem "web-console"
 end
 
+
+gem "devise", "~> 4.9"
