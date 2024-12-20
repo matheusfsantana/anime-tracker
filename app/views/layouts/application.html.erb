@@ -24,7 +24,7 @@
   </head>
 
   <body>
-    <div class="w-full flex justify-center">
+    <div class="w-full flex flex-wrap justify-center">
       <nav class="bg-white mx-auto shadow w-10/12 z-50">
         <div class="px-6 py-4">
           <div class="flex justify-between items-center">
@@ -46,10 +46,14 @@
           </div>
         </div>
       </nav>
-      <div> 
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-      </div>
+    </div>
+    <div class="w-full flex justify-center">
+        <% if notice.present? %>
+          <p class="w-10/12 bg-green-200 text-green-800 p-4 rounded text-center"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="w-10/12 bg-red-200 text-red-800 p-4 rounded text-center"><%= alert %></p>
+        <% end %>
     </div>
     <main class="w-10/12 mx-auto mt-12 px-5 flex">
       <%= yield %>
