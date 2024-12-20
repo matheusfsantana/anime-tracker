@@ -7,4 +7,6 @@ class User < ApplicationRecord
   enum :role, standard: 0, admin: 1
   validates :nickname, presence: true
   validates :nickname, uniqueness: { case_sensitive: false }
+
+  has_many :stats
 end

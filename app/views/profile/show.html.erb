@@ -1,0 +1,43 @@
+<div class="min-h-screen bg-gray-50 py-8 px-4">
+  <div class="max-w-4xl mx-auto">
+    <%# Profile Header %>
+    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+      <h1 class="text-3xl font-bold text-gray-800"><%= @user_profile.nickname %></h1>
+    </div>
+
+    <%# Anime List %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @user_profile.stats.each do |stats| %>
+        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+          <%# Title and Status Row %>
+          <div class="flex justify-between items-start mb-3">
+            <h2 class="text-lg font-semibold text-gray-800 truncate"><%= stats.anime.title %></h2>
+            <span class="px-2 py-1 rounded-full text-xs font-medium <%= stats.anime.status == 'Completed' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' %>">
+              <%= Anime.human_enum_name :status, stats.anime.status %>
+            </span>
+          </div>
+
+          <%# Stats Grid %>
+          <div class="grid grid-cols-2 gap-2 text-sm">
+            <div class="bg-gray-50 rounded-lg p-2">
+              <p class="text-gray-500 text-xs">Progress</p>
+              <p class="font-medium text-gray-800"><%= stats.current_ep %>/<%= stats.anime.quantity_episodes %></p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-2">
+              <p class="text-gray-500 text-xs">Status</p>
+              <p class="font-medium text-gray-800"><%= stats.status %></p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-2">
+              <p class="text-gray-500 text-xs">Episodes</p>
+              <p class="font-medium text-gray-800"><%= stats.anime.quantity_episodes %></p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-2">
+              <p class="text-gray-500 text-xs">Rewatched</p>
+              <p class="font-medium text-gray-800"><%= stats.rewatch_times %>x</p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

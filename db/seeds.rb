@@ -2,7 +2,7 @@ User.create!(
   nickname: 'Luffy',
   email: 'luffy@email.com',
   password: 'senha123',
-  role: :normal
+  role: :standard
 )
 
 User.create!(
@@ -24,3 +24,8 @@ Anime.create!(
   status: :finished_airing,
   quantity_episodes: 391
 )
+
+Stat.create!(user_id: 1, anime_id: 1, status: :watching)
+Stat.create!(user_id: 1, anime_id: 2, status: :completed)
+Stat.create!(user_id: 2, anime_id: 1, status: :completed)
+Stat.create!(user_id: 2, anime_id: 2, status: :completed)
