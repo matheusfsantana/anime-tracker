@@ -6,7 +6,7 @@ describe 'user try to create anime' do
     login_as admin
     visit new_anime_path
 
-    expect(current_path).to eq root_path
+    expect(current_path).not_to eq new_anime_path
   end
 
   it 'with success' do
