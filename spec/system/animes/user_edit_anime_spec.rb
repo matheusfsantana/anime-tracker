@@ -38,7 +38,7 @@ describe 'user try to edit anime' do
     expect(page).to have_content 'Lançando'
   end
 
-  it 'with empty fields' do
+  it 'And leave required fields blank' do
     anime = Anime.create!(
       title: 'Dragon Ball Z',
       sinopse: 'Five years after winning the World Martial Arts tournament, Gokuu is now living a peaceful life with his wife and son.',

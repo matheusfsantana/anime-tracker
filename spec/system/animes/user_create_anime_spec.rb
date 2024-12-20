@@ -26,4 +26,18 @@ describe 'user try to create anime' do
     expect(page).to have_content 'Pokémon are peculiar creatures with a vast array of different abilities and appearances'
     expect(page).to have_content 'Lançando'
   end
+
+  it 'And leave required fields blank' do
+    admin = User.create!(nickname: 'Rogério', email: 'user@example.com', password: 'password', role: :admin)
+
+    login_as admin
+    visit root_path
+
+    visit new_anime_path
+    fill_in 'Titulo', with: ''
+    fill_in 'Sinopse', with: 'Pokémon are peculiar creatures with a vast array of different abilities and appearances'
+    click_on 'Salvar'
+
+    expect(page).to have_content 'Erro ao tentar salvar anime'
+  end
 end
