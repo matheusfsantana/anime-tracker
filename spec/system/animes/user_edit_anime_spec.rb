@@ -8,7 +8,7 @@ describe 'user try to edit anime' do
       status: :finished_airing,
       quantity_episodes: 391
     )
-    admin = User.create!(nickname: 'Rogério', email: 'user@example.com', password: 'password', role: :normal)
+    admin = User.create!(nickname: 'Rogério', email: 'user@example.com', password: 'password', role: :standard)
     login_as admin
     visit edit_anime_path anime
 

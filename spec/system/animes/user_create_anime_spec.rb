@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user try to create anime' do
   it 'must be an admin' do
-    admin = User.create!(nickname: 'Rogério', email: 'user@example.com', password: 'password', role: :normal)
+    admin = User.create!(nickname: 'Rogério', email: 'user@example.com', password: 'password', role: :standard)
     login_as admin
     visit new_anime_path
 
