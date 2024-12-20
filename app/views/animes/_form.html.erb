@@ -6,7 +6,7 @@
         <%= f.text_field :sinopse, placeholder: Anime.human_attribute_name(:sinopse)%>
     </div>
     <div>
-        <%= f.select :status, Anime.statuses.keys%>
+        <%= f.select :status, Anime.statuses.keys.map { |status| [Anime.human_enum_name(:status, status), status] } %>
     </div>
     <div>
         <%= f.file_field :poster%>

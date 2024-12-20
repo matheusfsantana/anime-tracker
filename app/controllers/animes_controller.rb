@@ -1,5 +1,7 @@
 class AnimesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_anime, only: [ :show, :edit, :update ]
+  before_action :redirect_unless_admin, only: [ :edit, :update, :create, :new ]
   def index
     @animes = Anime.all
   end
@@ -11,13 +13,16 @@ class AnimesController < ApplicationController
       redirect_to @anime, notice: "Anime salvo com sucesso"
     else
       flash.now[:alert] = "Erro ao tentar salvar anime"
-      render "new"
+      render :new, status: :unprocessable_entity
     end
   end
 
   def update
     if @anime.update(anime_params)
-
+      redirect_to @anime
+    else
+      flash.now[:alert] = "Erro ao tentar alterar o anime"
+      render :edit, status: :unprocessable_entity
     end
   end
 

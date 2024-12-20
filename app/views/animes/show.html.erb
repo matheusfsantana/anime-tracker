@@ -11,6 +11,7 @@
     </section>
     <section>
         <h1 class="font-medium text-xl"><%= @anime.title%></h1>
+        <p><%= Anime.human_enum_name(:status, @anime.status)%></p>
         <h2 class="text-xl">Sinopse</h2>
         <p><%= @anime.sinopse %></p>
     </section>

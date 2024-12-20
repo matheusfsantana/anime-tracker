@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
+
+  def redirect_unless_admin
+    redirect_to root_path if user_signed_in? && !current_user.admin?
+  end
+
   def after_sign_in_path_for(resource)
     profile_path(current_user.nickname)
   end
