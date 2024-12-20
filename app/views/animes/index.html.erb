@@ -1,4 +1,4 @@
-<section class="">
+<section>
     <% @animes.each do |anime| %>
         <div class="flex mb-3">
             <% if anime.poster.attached?%>
@@ -7,7 +7,9 @@
                 <div class="bg-gray-300 w-24 h-48 mr-8"></div>
             <% end %>
             <div>
-                <p class="text-xl"><%= anime.title%></p>
+                <%= link_to anime do%>
+                    <p class="text-xl font-medium"><%= anime.title%></p>
+                <% end %>
             </div>
         </div>
     <% end %>

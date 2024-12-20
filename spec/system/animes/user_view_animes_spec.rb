@@ -2,6 +2,8 @@ require 'rails_helper'
 
 describe 'user try to view animes' do
   it 'with success' do
+    user = User.create!(nickname: 'Rogério', email: 'user@example.com', password: 'password')
+
     Anime.create!(
       title: 'One Piece',
       sinopse: 'Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates.',
@@ -14,6 +16,8 @@ describe 'user try to view animes' do
           status: :finished_airing,
           quantity_episodes: 391
         )
+
+    login_as user
 
     visit animes_path
 

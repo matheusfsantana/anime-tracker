@@ -1,3 +1,17 @@
+User.create!(
+  nickname: 'Luffy',
+  email: 'luffy@email.com',
+  password: 'senha123',
+  role: :normal
+)
+
+User.create!(
+  nickname: 'naruto',
+  email: 'naruto@email.com',
+  password: 'senha123',
+  role: :admin
+)
+
 Anime.create!(
   title: 'One Piece',
   sinopse: 'Barely surviving in a barrel after passing through a terrible whirlpool at sea, carefree Monkey D. Luffy ends up aboard a ship under attack by fearsome pirates.',

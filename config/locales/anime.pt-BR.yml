@@ -1,5 +1,11 @@
 pt-BR:
-  activerecords:
+  activerecord:
     attributes:
       anime:
         title: Titulo
+        quantity_episodes: Quantidade de episódios
+        statuses:
+          currently_airing: Lançando
+          not_yet_airing: Em breve
+          finished_airing: Concluído
+          cancelled: Cancelado
