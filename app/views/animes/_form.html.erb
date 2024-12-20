@@ -1,18 +1,20 @@
 <%= form_with model: anime do |f| %>
     <div>
-        <%= f.text_field :title, placeholder: Anime.human_attribute_name(:title)%>
+        <%= f.text_field :title, placeholder: Anime.human_attribute_name(:title), class: 'input-primary'%>
+        <%= form_error anime, :title%>
     </div>
     <div>
-        <%= f.text_field :sinopse, placeholder: Anime.human_attribute_name(:sinopse)%>
+        <%= f.text_field :sinopse, placeholder: Anime.human_attribute_name(:sinopse), class: 'input-primary'%>
     </div>
     <div>
-        <%= f.select :status, Anime.statuses.keys.map { |status| [Anime.human_enum_name(:status, status), status] } %>
+        <%= f.select :status, Anime.statuses.keys.map { |status| [Anime.human_enum_name(:status, status), status] }%>
     </div>
     <div>
         <%= f.file_field :poster%>
     </div>
     <div>
-        <%= f.number_field :quantity_episodes, placeholder: Anime.human_attribute_name(:quantity_episodes)%>
+        <%= f.number_field :quantity_episodes, placeholder: Anime.human_attribute_name(:quantity_episodes), class: 'input-primary'%>
+        <%= form_error anime, :quantity_episodes%>
     </div>
     <%= f.submit 'Salvar'%>
 <% end %>
