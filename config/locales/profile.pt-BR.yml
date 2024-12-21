@@ -1,0 +1,11 @@
+pt-BR:
+  activerecord: 
+    attributes:
+      profile:
+        about: Sobre mim
+        privacy: Privacidade
+        privacies:
+          public_access: Acesso Público
+          private_access: Acesso Privado
+
+

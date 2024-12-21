@@ -1,10 +1,18 @@
 <div class="min-h-screen bg-gray-50 py-8 px-4">
   <div class="max-w-4xl mx-auto">
     <%# Profile Header %>
-    <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+    <div class="flex items-center bg-white rounded-lg shadow-md p-6 mb-8">
       <h1 class="text-3xl font-bold text-gray-800"><%= @user_profile.nickname %></h1>
+      <div class="flex ml-auto">
+        <% if current_user == @user_profile %>
+          <%= link_to 'Editar perfil', edit_profiles_path %>
+        <% end %>
+      </div>
     </div>
 
+  <% if @user_profile.profile.private_access? && current_user != @user_profile %>
+    <span>Esse perfil é privado.<span>
+  <% else %>
     <%# Anime List %>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       <% @user_profile.stats.each do |stats| %>
@@ -39,5 +47,6 @@
         </div>
       <% end %>
     </div>
+    <% end %>
   </div>
 </div>
