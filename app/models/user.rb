@@ -9,4 +9,7 @@ class User < ApplicationRecord
   validates :nickname, uniqueness: { case_sensitive: false }
 
   has_many :stats
+  has_one :profile
+
+  after_create :'create_profile!'
 end
