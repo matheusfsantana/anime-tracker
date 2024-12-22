@@ -12,4 +12,7 @@ class User < ApplicationRecord
   has_one :profile
 
   after_create :'create_profile!'
+  has_many :friendships
+  has_many :friends, through: :friendships
+  has_many :friend_requests
 end
