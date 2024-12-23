@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  layout "dashboard"
   before_action :set_profile, only: :show
   before_action :authenticate_user!
 
