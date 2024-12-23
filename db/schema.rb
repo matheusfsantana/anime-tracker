@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_21_220321) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_21_122218) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -48,18 +48,10 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_21_220321) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "friend_requests", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "target_user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["target_user_id"], name: "index_friend_requests_on_target_user_id"
-    t.index ["user_id"], name: "index_friend_requests_on_user_id"
-  end
-
   create_table "friendships", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "friend_id", null: false
+    t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
@@ -103,8 +95,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_21_220321) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "friend_requests", "users"
-  add_foreign_key "friend_requests", "users", column: "target_user_id"
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
   add_foreign_key "profiles", "users"
