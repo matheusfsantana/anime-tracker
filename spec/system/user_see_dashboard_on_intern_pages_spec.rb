@@ -11,7 +11,7 @@ describe 'User see dashboard on intern pages' do
 
     login_as user
 
-    visit root_path
+    visit profile_path(user.nickname)
 
     within 'aside' do
       expect(page).to have_content('Menu')
