@@ -24,7 +24,7 @@ describe 'User change his profile' do
     user = User.create!(nickname: 'Marcos', email: 'marcos@example.com', password: 'password', role: :standard)
 
     login_as user
-    visit root_path
+    visit profile_path(user.nickname)
     click_on 'Editar perfil'
     select 'Acesso Privado', from: 'Privacidade'
     click_on 'Salvar'
@@ -40,7 +40,7 @@ describe 'User change his profile' do
     user.profile.private_access!
 
     login_as user
-    visit root_path
+    visit profile_path(user.nickname)
     click_on 'Editar perfil'
     select 'Acesso Público', from: 'Privacidade'
     click_on 'Salvar'
@@ -56,7 +56,7 @@ describe 'User change his profile' do
     user.profile.private_access!
 
     login_as user
-    visit root_path
+    visit profile_path(user.nickname)
     click_on 'Editar perfil'
     fill_in 'Sobre mim', with: 'Teste'
     click_on 'Salvar'
