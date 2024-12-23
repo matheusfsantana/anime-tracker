@@ -7,7 +7,7 @@ class FriendshipsController < ApplicationController
     if @friendship.save
       redirect_to profile_path(nickname: friend.nickname), notice: "Pedido de amizade enviado"
     else
-      redirect_to profile_path(nickname: friend.nickname), alert: "Erro ao tentar enviar um pedido de amizade enviado"
+      redirect_to profile_path(nickname: friend.nickname), alert: "Erro ao tentar enviar um pedido de amizade"
     end
   end
   def index

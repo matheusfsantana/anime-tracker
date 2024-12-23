@@ -39,7 +39,7 @@
               </div>
             <% else %>
                 <div class="flex items-center space-x-4">
-                  <span class="mr-3"> <%= current_user.nickname %></span>
+                  <%= link_to current_user.nickname, profile_path(nickname: current_user.nickname), class: "text-gray-700 mr-3"%>
                   <%= button_to 'Sair', destroy_user_session_path, method: :delete, class: 'text-black' %> 
                 </div>
             <% end %>
