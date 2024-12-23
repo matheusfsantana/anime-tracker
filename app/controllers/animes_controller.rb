@@ -1,4 +1,5 @@
 class AnimesController < ApplicationController
+  layout "dashboard"
   before_action :authenticate_user!
   before_action :set_anime, only: [ :show, :edit, :update ]
   before_action :redirect_unless_admin, only: [ :edit, :update, :create, :new ]
