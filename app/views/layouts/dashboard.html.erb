@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="flex items-center gap-4">
-              <span class="text-gray-700"><%= current_user.nickname %></span>
+              <%= link_to current_user.nickname, profile_path(nickname: current_user.nickname), class: "text-gray-700"%>
               <%= button_to 'Sair', destroy_user_session_path,
                   method: :delete,
                   class: 'rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50' %>

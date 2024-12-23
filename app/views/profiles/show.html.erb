@@ -1,51 +1,35 @@
-<div class="min-h-screen bg-gray-50 py-8 px-4">
-  <div class="max-w-4xl mx-auto">
+<div class="min-h-screen bg-gray-50 py-8 px-4 w-full">
+  <div class="max-w-6xl mx-auto">
     <%# Profile Header %>
-    <div class="flex items-center bg-white rounded-lg shadow-md p-6 mb-8">
-      <h1 class="text-3xl font-bold text-gray-800"><%= @user_profile.nickname %></h1>
-      <div class="flex ml-auto">
-        <% if current_user == @user_profile %>
-          <%= link_to 'Editar perfil', edit_profiles_path %>
+    <div class="flex flex-col bg-white rounded-lg shadow-md p-6 mb-8">
+      <div class="flex items-center">
+        <h1 class="text-3xl font-bold text-gray-800"><%= @user_profile.nickname %></h1>
+        <div class="flex ml-auto">
+          <% if current_user == @user_profile %>
+            <%= link_to 'Editar perfil', edit_profiles_path %>
+          <% end %>
+        </div>
+      </div>
+      <div>
+        <% if current_user == @user_profile%>
+          <%= link_to "Amigos #{@user_profile.accepted_friendships.count}", friendships_path, class: 'text-gray-500 font-medium hover:underline'%>
+        <% else %>
+          <p class="text-gray-500 font-medium">Amigos <%= @user_profile.all_friendships.count%></p>
+          <% unless current_user.all_friends.include?(@user_profile)%>
+            <%= button_to 'Mandar pedido de amizade', user_friendships_path(user_id: @user_profile.id)%>
+          <% end %>
         <% end %>
       </div>
+      
     </div>
 
-  <% if @user_profile.profile.private_access? && current_user != @user_profile %>
-    <span>Esse perfil é privado.<span>
-  <% else %>
+    <% if @user_profile.profile.private_access? && current_user != @user_profile %>
+      <span>Esse perfil é privado.<span>
+    <% else %>
+
     <%# Anime List %>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <% @user_profile.stats.each do |stats| %>
-        <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
-          <%# Title and Status Row %>
-          <div class="flex justify-between items-start mb-3">
-            <h2 class="text-lg font-semibold text-gray-800 truncate"><%= stats.anime.title %></h2>
-            <span class="px-2 py-1 rounded-full text-xs font-medium <%= stats.anime.status == 'Completed' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' %>">
-              <%= Anime.human_enum_name :status, stats.anime.status %>
-            </span>
-          </div>
-
-          <%# Stats Grid %>
-          <div class="grid grid-cols-2 gap-2 text-sm">
-            <div class="bg-gray-50 rounded-lg p-2">
-              <p class="text-gray-500 text-xs">Progress</p>
-              <p class="font-medium text-gray-800"><%= stats.current_ep %>/<%= stats.anime.quantity_episodes %></p>
-            </div>
-            <div class="bg-gray-50 rounded-lg p-2">
-              <p class="text-gray-500 text-xs">Status</p>
-              <p class="font-medium text-gray-800"><%= stats.status %></p>
-            </div>
-            <div class="bg-gray-50 rounded-lg p-2">
-              <p class="text-gray-500 text-xs">Episodes</p>
-              <p class="font-medium text-gray-800"><%= stats.anime.quantity_episodes %></p>
-            </div>
-            <div class="bg-gray-50 rounded-lg p-2">
-              <p class="text-gray-500 text-xs">Rewatched</p>
-              <p class="font-medium text-gray-800"><%= stats.rewatch_times %>x</p>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <%= render partial: 'anime_card', collection: @user_profile.stats, as: :stats%>
     </div>
     <% end %>
   </div>

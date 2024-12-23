@@ -1,3 +1,5 @@
+require 'rails_helper'
+
 describe 'User' do
   context 'register anime' do
     it 'and is not authenticated' do

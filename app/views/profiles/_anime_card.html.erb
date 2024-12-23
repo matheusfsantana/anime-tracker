@@ -1,0 +1,17 @@
+ <div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">
+    <%# Title and Status Row %>
+    <div class="flex justify-between items-start mb-3">
+    <h2 class="text-lg font-semibold text-gray-800 truncate"><%= stats.anime.title %></h2>
+    <span class="px-2 py-1 rounded-full text-xs font-medium <%= stats.anime.status == 'Completed' ? 'bg-green-100 text-green-800' : 'bg-blue-100 text-blue-800' %>">
+        <%= Anime.human_enum_name :status, stats.anime.status %>
+    </span>
+    </div>
+
+    <%# Stats Grid %>
+    <div class="grid grid-cols-2 gap-2 text-sm">
+        <%= render partial: 'stat', locals: {stat: "#{stats.current_ep}/#{stats.anime.quantity_episodes}", stat_title: 'ep assistidos'}%>
+        <%= render partial: 'stat', locals: {stat: stats.status, stat_title: 'status'}%>
+        <%= render partial: 'stat', locals: {stat: stats.anime.quantity_episodes, stat_title: 'qtd episódios'}%>
+        <%= render partial: 'stat', locals: {stat: stats.rewatch_times, stat_title: 'assistido novamente'}%>
+    </div>
+</div>

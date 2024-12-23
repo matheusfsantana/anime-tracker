@@ -1,15 +1,34 @@
-User.create!(
+luffy = User.create!(
   nickname: 'Luffy',
   email: 'luffy@email.com',
   password: 'senha123',
   role: :standard
 )
 
-User.create!(
+naruto = User.create!(
   nickname: 'naruto',
   email: 'naruto@email.com',
   password: 'senha123',
   role: :admin
+)
+
+zoro =  User.create!(
+  nickname: 'Zoro',
+  email: 'zoro@email.com',
+  password: 'senha123',
+  role: :standard
+)
+
+Friendship.create!(
+  user: luffy,
+  friend: zoro,
+  status: :accepted
+)
+
+Friendship.create!(
+  user: naruto,
+  friend: luffy,
+  status: :pending
 )
 
 Anime.create!(
@@ -25,7 +44,6 @@ Anime.create!(
   quantity_episodes: 391
 )
 
-Stat.create!(user_id: 1, anime_id: 1, status: :watching)
-Stat.create!(user_id: 1, anime_id: 2, status: :completed)
+Stat.create!(user: luffy, anime_id: 2, status: :watching)
 Stat.create!(user_id: 2, anime_id: 1, status: :completed)
 Stat.create!(user_id: 2, anime_id: 2, status: :completed)

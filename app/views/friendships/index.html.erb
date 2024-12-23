@@ -1,0 +1,29 @@
+<div class="flex flex-col w-full max-w-4xl p-4 mx-auto">
+    <h1 class="text-xl">Amizades</h1>
+    <div class="flex gap-12">
+        <%= link_to 'Amigos', friendships_path%>
+        <%= link_to 'Solicitações de amizade', friendships_path(pending: true)%>
+    </div>
+    
+    <div class='bg-gray-200 h-[1px] my-2'></div>
+        <% @friendship_list.each do |friendship| %>
+            <div class="flex items-center min-w-1/2 bg-white p-4">
+                <%= link_to profile_path(nickname: friendship.get_friend(current_user).nickname), class: 'flex-grow' do%>
+                    <div class="flex-grow">
+                        <h1> <%= friendship.get_friend(current_user).nickname %> </h1>
+                    </div>
+                <% end %> 
+                <% if @pending%>
+                    <div class="flex items-center gap-2">
+                        <%= button_to 'Aceitar', accept_friendship_path(friendship), method: :patch%>
+                        <%= button_to 'Rejeitar', friendship_path(friendship), method: :delete%>
+                    </div>
+                <% else%>
+                    <%= link_to 'remover amizade', friendship_path(friendship), data: {turbo_method: :delete},  class: 'p-2 rounded-2xl border-2 border-gray-200 hover:border-gray-500'%>
+                <% end %>
+            </div>
+            
+            <div class='bg-gray-200 h-[1px] my-2'></div>
+        <% end %>
+        
+    </div>
