@@ -14,7 +14,7 @@ describe 'user try to view' do
 
       login_as user
 
-      visit root_path
+      visit profile_path(user.nickname)
 
       expect(page).to have_content 'Marcos'
       expect(page).to have_content 'Dragon Ball Z'
