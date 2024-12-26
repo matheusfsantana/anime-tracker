@@ -8,4 +8,12 @@ Rails.application.routes.draw do
       patch :update
     end
   end
+  
+  resources :friendships, only: [:index, :destroy] do
+    patch 'accept', on: :member
+  end
+
+  resources :users, only: [:new, :create] do
+    resource :friendships, only: [:create]
+  end
 end
