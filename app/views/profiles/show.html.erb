@@ -14,7 +14,7 @@
         <% if current_user == @user_profile%>
           <%= link_to "Amigos #{@user_profile.accepted_friendships.count}", friendships_path, class: 'text-gray-500 font-medium hover:underline'%>
         <% else %>
-          <p class="text-gray-500 font-medium">Amigos <%= @user_profile.all_friendships.count%></p>
+          <p class="text-gray-500 font-medium">Amigos <%= @user_profile.accepted_friendships.count%></p>
           <% unless current_user.all_friends.include?(@user_profile)%>
             <%= button_to 'Mandar pedido de amizade', user_friendships_path(user_id: @user_profile.id)%>
           <% end %>
